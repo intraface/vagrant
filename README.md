@@ -5,6 +5,7 @@ Requirements
 -- 
 
 - http://vagrantup.com/
+- Make sure you have added a base box already, see http://vagrantup.com/v1/docs/getting-started/index.html
 
 Setting up Intraface
 -- 
