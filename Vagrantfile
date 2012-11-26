@@ -24,12 +24,12 @@ Vagrant::Config.run do |config|
 
   # Forward a port from the guest to the host, which allows for outside
   # computers to access the VM, whereas host only networking does not.
-  # config.vm.forward_port 80, 8080
+  config.vm.forward_port 80, 8080
 
   # Share an additional folder to the guest VM. The first argumentva is
   # an identifier, the second is the path on the guest to mount the
   # folder, and the third is the path on the host to the actual folder.
-  # config.vm.share_folder "v-data", "/vagrant_data", "../data"
+  config.vm.share_folder "intraface", "../../../Documents/workspace/intraface.dk/", "."
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding 
@@ -50,13 +50,14 @@ Vagrant::Config.run do |config|
     chef.add_recipe "php::module_apc"
     chef.add_recipe "php::module_mysql"
     chef.add_recipe "php::module_curl"
+    chef.add_recipe "intraface"
   #  chef.add_role "web"
   #  You may also specify custom JSON attributes:
     chef.json = {
       :mysql => {
-        :server_root_password => "foo",
-        :server_repl_password => "foo",
-        :server_debian_password => "foo",
+        :server_root_password => "intraface",
+        :server_repl_password => "intraface",
+        :server_debian_password => "intraface",
       }
     }
   end
