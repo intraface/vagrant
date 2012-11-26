@@ -32,3 +32,4 @@ Documentation
 - https://s3.amazonaws.com/chef-talk/chef-talk.html#intro
 - http://iostudio.github.com/LunchAndLearn/2012/03/21/vagrant.html
 - http://vimeo.com/9976342
+- http://treehouseagency.com/blog/steven-merrill/2011/11/17/vagrant-and-nfs
