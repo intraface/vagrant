@@ -155,6 +155,10 @@ php_pear "Net_IDNA" do
   action :install
 end
 
+php_pear "HTTP" do
+  action :install
+end
+
 php_pear "HTTP_Upload" do
   action :install
 end
