@@ -508,6 +508,5 @@ execute "Setting up the starting database" do
 end
 
 execute "Setting up the starting database" do
-  command "cd /vagrant/intraface.dk"
-  command "php tests/unit/setup_database.php"
+  command "php /vagrant/intraface.dk/tests/unit/setup_database.php"
 end
