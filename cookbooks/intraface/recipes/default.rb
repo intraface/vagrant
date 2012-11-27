@@ -10,6 +10,21 @@ web_app "application" do
   notifies :restart, resources(:service => "apache2")
 end
 
+# this only puts the php.ini in the cli version
+template "#{node['php']['conf_dir']}/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
+template "/etc/php5/apache2/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
 execute "Update PEAR packages" do
   command "pear upgrade-all"
   command "sudo pear config-set preferred_state alpha"  
@@ -272,6 +287,12 @@ php_pear "Phing_IlibPearDeployerTask" do
   action :install
 end
 
+php_pear "ErrorHandler" do
+  channel intraface.channel_name
+  action :install
+  preferred_state "alpha"
+end
+
 php_pear "Ilib_ErrorHandler_Handler" do
   channel intraface.channel_name
   action :install
@@ -508,5 +529,5 @@ execute "Setting up the starting database" do
 end
 
 execute "Setting up the starting database" do
-  command "php /vagrant/intraface.dk/tests/unit/setup_database.php"
+  command "php /vagrant/intraface.dk/tests/unit/setup_database.php intraface"
 end
